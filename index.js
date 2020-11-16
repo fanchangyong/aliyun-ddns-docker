@@ -35,7 +35,7 @@ async function updateRecord() {
       Type: 'A',
       Value: ip,
     });
-    console.log('Added record: ', res)
+    console.log(`[${new Date()}] Added record: `, res)
   } else {
     const record = records.DomainRecords.Record[0];
     if (record.Value !== ip) {
@@ -44,9 +44,9 @@ async function updateRecord() {
         Action: 'UpdateDomainRecord',
         Value: ip,
       });
-      console.log('Updated record: ', res);
+      console.log(`[${new Date()}] Updated record: `, res);
     } else {
-      console.log('IP not changed, skipping..');
+      console.log(`[${new Date()}] IP not changed, skipping..`);
     }
   }
 }
