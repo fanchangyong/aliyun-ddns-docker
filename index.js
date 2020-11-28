@@ -7,7 +7,7 @@ const client = ALIDNS({
   accesskeySecret: process.env.ACCESS_KEY_SECRET,
 });
 
-const hostname = 'fanchangyong.xyz';
+const domain = process.env.DOMAIN_NAME;
 
 async function callAli(params) {
   return new Promise((resolve, reject) => {
@@ -24,13 +24,13 @@ async function updateRecord() {
   const ip = await publicIp.v4();
   const records = await callAli({
     Action: 'DescribeDomainRecords',
-    DomainName: hostname,
+    DomainName: domain,
   });
   const count = records.TotalCount;
   if (count === 0) {
     const res = await callAli({
       Action: 'AddDomainRecord',
-      DomainName: hostname,
+      DomainName: domain,
       RR: '@',
       Type: 'A',
       Value: ip,
