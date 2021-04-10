@@ -1,4 +1,4 @@
-const publicIp = require('public-ip');
+const getIp = require('get-ip-cn');
 const ALIDNS = require('alidns-nodejs');
 require('dotenv').config();
 
@@ -21,7 +21,7 @@ async function callAli(params) {
 }
 
 async function updateRecord() {
-  const ip = await publicIp.v4();
+  const ip = await getIp()
   const records = await callAli({
     Action: 'DescribeDomainRecords',
     DomainName: domain,
