@@ -2,7 +2,7 @@ FROM node:10
 
 WORKDIR /app
 
-VOLUME /app/.env
+# VOLUME /app/.env
 
 COPY package.json .
 COPY yarn.lock .

@@ -6,4 +6,7 @@ services:
     image: aliyun-ddns:latest
     restart: always
     volumes:
-      - ./.env:/app/.env
+      - type: bind
+        source: ./.env
+        target: /app/.env
+        read_only: true
